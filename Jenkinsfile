@@ -69,13 +69,13 @@ pipeline {
 
     post {
         success {
-            mail to: 's223890542@deakin.edu.au',
+            mail to: 'mandapati.charishma97@gmail.com',
                  subject: "Build Successful: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
                  body: "The build was successful. Logs are attached."
             // Optionally, you can use a different approach to include logs manually if needed
         }
         failure {
-            mail to: 's223890542@deakin.edu.au',
+            mail to: 'mandapati.charishma97@gmail.com',
                  subject: "Build Failed: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
                  body: "The build has failed. Logs are attached."
             // Optionally, you can use a different approach to include logs manually if needed
