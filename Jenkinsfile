@@ -69,17 +69,20 @@ pipeline {
 
     post {
         success {
-            mail to: 'mandapati.charishma97@gmail.com',
-                 subject: "Build Successful: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
-                 body: "The build was successful. Logs are attached.",
-                 attachLog: true
-            // Optionally, you can use a different approach to include logs manually if needed
+            emailext(
+                to: 'mandapati.charishma97@gmail.com',
+                subject: "Build Successful: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                body: "The build was successful. Logs are attached.",
+                attachLog: true
+                )
         }
         failure {
-            mail to: 'mandapati.charishma97@gmail.com',
-                 subject: "Build Failed: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
-                 body: "The build has failed. Logs are attached.",
-                 attachLog: true
+            emailext( 
+                to: 'mandapati.charishma97@gmail.com',
+                subject: "Build Failed: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                body: "The build has failed. Logs are attached.",
+                attachLog: true
+                )
             // Optionally, you can use a different approach to include logs manually if needed
         }
     }
