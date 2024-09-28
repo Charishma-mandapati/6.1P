@@ -4,22 +4,22 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'npm test'
+                bat 'npm test'
             }
         }
 
         stage('Code Quality Analysis') {
             steps {
                 echo 'Running code quality analysis...'
-                sh 'npm install eslint'
-                sh './node_modules/.bin/eslint .'
+                bat 'npm install eslint'
+                bat './node_modules/.bin/eslint .'
             }
         }
 
@@ -27,8 +27,8 @@ pipeline {
             steps {
                 echo 'Deploying the application...'
                 // Example for deploying with Docker or Heroku
-                sh 'docker build -t node-js-sample .'
-                sh 'docker run -d -p 3000:3000 node-js-sample'
+                bat 'docker build -t node-js-sample .'
+                bat 'docker run -d -p 3000:3000 node-js-sample'
             }
         }
     }
