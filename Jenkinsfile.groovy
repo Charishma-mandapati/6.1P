@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                bat 'npm install'
+                bat 'docker build -t node-js-sample .'
                 
 
             }
