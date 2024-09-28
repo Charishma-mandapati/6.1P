@@ -18,6 +18,7 @@ pipeline {
             steps {
                
                 echo 'Running tests...'
+                bat 'npm install --save-dev supertest'
                 bat 'npm test'
             }
         }
