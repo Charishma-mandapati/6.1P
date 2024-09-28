@@ -9,11 +9,15 @@ pipeline {
         }
         stage('Build') {
             steps {
+                echo 'Building the project...'
                 bat 'npm install'
+
             }
         }
         stage('Test') {
             steps {
+               
+                echo 'Running tests...'
                 bat 'npm test'
             }
         }
