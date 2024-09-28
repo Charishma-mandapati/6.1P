@@ -27,5 +27,8 @@
   "contributors": [
     "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.11.1"
+  }
 }
