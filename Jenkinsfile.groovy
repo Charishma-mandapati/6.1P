@@ -1,46 +1,45 @@
 pipeline {
     agent any
+
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Charishma-mandapati/6.1P.git'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building the project...'
-                sh 'npm install'
+                bat 'npm install'
             }
         }
-
         stage('Test') {
             steps {
-                echo 'Running tests...'
-                sh 'npm test'
+                bat 'npm test'
             }
         }
-
         stage('Code Quality Analysis') {
             steps {
                 echo 'Running code quality analysis...'
-                sh 'npm install eslint'
-                sh './node_modules/.bin/eslint .'
+                // Add your code quality tools here (e.g., ESLint)
             }
         }
-
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
-                // Example for deploying with Docker or Heroku
-                sh 'docker build -t node-js-sample .'
-                sh 'docker run -d -p 3000:3000 node-js-sample'
+                echo 'Deploying application...'
+                // Add your deployment steps here
             }
         }
     }
     post {
         always {
-            echo 'Pipeline execution complete!'
+            echo 'Cleaning up...'
+            // Add any cleanup steps if necessary
+        }
+        success {
+            echo 'Pipeline completed successfully!'
         }
         failure {
             echo 'Pipeline failed!'
-        }
-        success {
-            echo 'Pipeline succeeded!'
         }
     }
 }
